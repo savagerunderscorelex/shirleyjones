@@ -1,7 +1,6 @@
 import java.util.Scanner;
 import java.util.List;
 
-
 // Comments...
 // Overview: This project is a command line mystery game. You play as a detective named\ Shirley Jones who lives in Old Yap City.
 
@@ -10,13 +9,27 @@ Notes:
 
  */
 
-// TODO: Figure out how to randomize which NPC is a suspect during every play.
+// To do: Figure out how to randomize which NPC is a suspect during every play.
 
 public class ShirleyJones {
     public static void main(String[] args){
-        // Tests
+        // Initializations
+        Clue firstClue = new Clue("This is the first Clue.");
+        Clue secondClue = new Clue("This is the second Clue");
+        Clue thirdClue = new Clue("This is the third Clue.");
+        Clue fourthClue = new Clue("This is the fourth Clue.");
 
+
+        Player userPlayer = new Player("Your Office", 100, 0);
+        Clue[] cluesList = {firstClue, secondClue, thirdClue, fourthClue};
         // Actual Code
+
+
+
+        // Tests
+        System.out.println(userPlayer.health);
+        System.out.println(cluesList[0].clueDesc);
+
 
     }
 
@@ -39,7 +52,7 @@ public class ShirleyJones {
 
     // Player Class
 
-    public class Player {
+    static class Player {
         String location;
         int health;
         int numberOfClues;
@@ -53,7 +66,7 @@ public class ShirleyJones {
 
     // Clue Class
 
-    public class Clue {
+    static class Clue {
         String clueDesc;
 
         public Clue(String clueDesc){
@@ -63,7 +76,7 @@ public class ShirleyJones {
 
     // NPC Class
 
-    public class NPC {
+    static class NPC {
         String name;
         boolean isKiller;
         int age;

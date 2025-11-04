@@ -19,18 +19,19 @@ public class ShirleyJones {
         Clue thirdClue = new Clue("This is the third Clue.");
         Clue fourthClue = new Clue("This is the fourth Clue.");
 
-
         Player userPlayer = new Player("Your Office", 100, 0);
         Clue[] cluesList = {firstClue, secondClue, thirdClue, fourthClue};
         // Actual Code
 
-
+        // Scanners
+        
 
         // Tests
-        System.out.println(userPlayer.health);
-        System.out.println(cluesList[0].clueDesc);
-
-
+        System.out.println(userPlayer.health); // Prints Player Health (checks if I properly set up the player class)
+        System.out.println(cluesList[0].clueDesc); // Prints the first clue's description (makes sure that I can access the description through using the index of the clue + a method)
+        InputFunctions.locationInputMethod(); // Creates a scanner, gets the input, and prints the input (makes sure that I wrote the function right and works as well as if I typed out all the code in the run function)
+        
+        InputFunctions.locationInputMethod(); // Second instance of the function to see if I can call this function again to make it work.
     }
 
 
@@ -43,14 +44,20 @@ public class ShirleyJones {
             System.out.println("Your name is Shirley Jones. You are a detective from Old Yap City. You are investigating a murder that occurred a couple of days ago.");
         }
 
-        static void chooseLocation() {
+        static void printLocations() {
             System.out.println("Where do you want to go? 1) Your Office, 2) Martha's House, 3) David's Bakery, 4) Layla's Corner Store, 5) Officer Jason's Home, 6) Daria's Flower Shop: ");
-            Scanner locationScanner = new Scanner(System.in);
-            String choosenLocation = locationScanner.nextLine();
         }
     }
 
     // Player Class
+    public class InputFunctions {
+        static void locationInputMethod() {
+            Scanner inputLocation = new Scanner(System.in);
+            String chosenLocation = inputLocation.nextLine();
+            System.out.println(chosenLocation);
+        }
+    }
+
 
     static class Player {
         String location;

@@ -21,4 +21,6 @@
 
 However, no matter how many times I tested the function it wouldn't do it. The issue was that I didn't realize that comparing strings in Java is different than comparing strings in Python, Javascript, or GDScript (my only experiences in languages so far). So I had to use the equals method to compare strings (which I found out through a google search).
 
-I also added comments to explain my code.
+## 11/7
+
+For the last 2 days I focused more on developing characters instead of actually programming. I plan to write dialogues on Milanote first and then try to incorporate them in the dialogue class functions.

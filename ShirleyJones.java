@@ -2,13 +2,13 @@ import java.util.Scanner;
 import java.util.List;
 
 // Comments...
-// Overview: This project is a command line mystery game. You play as a detective named\ Shirley Jones who lives in Old Yap City.
+// Overview: This project is a command line mystery game. You play as a detective named Shirley Jones who lives in Old Yap City.
 
 /*
 Notes:
 
- */
 
+*/
 // To do: Figure out how to randomize which NPC is a suspect during every play.
 
 public class ShirleyJones {
@@ -30,19 +30,9 @@ public class ShirleyJones {
         // Tests
         System.out.println(userPlayer.health); // Prints Player Health (checks if I properly set up the player class)
         System.out.println(cluesList[0].clueDesc); // Prints the first clue's description (makes sure that I can access the description through using the index of the clue + a method)
-        InputFunctions.locationInputMethod(); // Creates a scanner, gets the input, and prints the input (makes sure that I wrote the function right and works as well as if I typed out all the code in the run function)
-        
+        InputFunctions.locationInputMethod(); // Creates a scanner, gets the input, and stores it in the variable globalVariables.chosenLocation
+        validationFunctions.checkLocationInput(); // This checks the globalVariables.chosenLocation variable and prints a statement depending on that location number
 
-        System.out.println(globalVariables.chosenLocation.getClass().getName()); // Prints the type of globalVariables.chosenLocation
-
-        
-        if (globalVariables.chosenLocation.equals("heyhey")){ // Testing if statements in java: checks if the globalVariables.chosenLocation variable is equal to the string "heyhey"
-            System.out.println("bye"); // if so, print this
-        } else {
-            System.out.println("you mdskjfdsk"); // if not print this
-        }
-
-        InputFunctions.locationInputMethod(); // Second instance of the function to see if I can call this function again to make it work.
     }
 
 
@@ -65,6 +55,10 @@ public class ShirleyJones {
         static void printNewClue() { // When the player gets a new clue, print this
             System.out.println("You got a new clue! Go to your office to look over your list of clues.");
         }
+
+        static void officeDescription() {
+            System.out.println("You enter your office. Now you can review your list of gathered clues in peace.");
+        }
     }
 
     public class InputFunctions {
@@ -74,6 +68,13 @@ public class ShirleyJones {
         }
     }
 
+    public class validationFunctions{
+        static void checkLocationInput(){
+            if (globalVariables.chosenLocation.equals("1")){
+                Dialogues.officeDescription();
+            }
+        }
+    }
     // Player Class
     static class Player {
         String location;

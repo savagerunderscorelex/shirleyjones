@@ -51,7 +51,7 @@ public class ShirleyJones {
             System.out.println("Your name is Shirley Jones. You are a detective from Old Yap City. You are investigating a murder that occurred a couple of days ago.");
         }
         static void printLocations() { // 7 Current Locations out of 11
-            System.out.print("Where do you want to go? Enter the number for the location you want to go to. 1) Your Office, 2) Martha's House, 3) David's Bakery, 4) Layla's Corner Store, 5) Officer Jason's Home, 6) Daria's Flower Shop, 7) Community Center: ");
+            System.out.print("Where do you want to go? Enter the number for the location you want to go to. 1) Your Office, 2) Martha's House, 3) David's Bakery, 4) Layla's Corner Store, 5) Officer Jason's Home, 6) Daria's Flower Shop, 7) Community Center, 8) Moreau Mansion: ");
         }
 
         static void printNewClue() { // When the player gets a new clue, print this
@@ -62,26 +62,38 @@ public class ShirleyJones {
             System.out.println("You enter your office. Now you can review your list of gathered clues in peace.");
         }
 
-        static void marthaDescription() {
+        static void marthaHomeDescription() {
 
         }
-        static void davidDescription() {
-
-        }
-
-        static void laylaDescription() {
+        static void davidBakeryDescription() {
 
         }
 
-        static void jasonDescription() {
+        static void laylaStoreDescription() {
 
         }
 
-        static void dariaDescription() {
+        static void jasonHomeDescription() {
 
         }
 
-        static void emberDescription() {
+        static void dariaFlowerDescription() {
+
+        }
+
+        static void emberCommunityDescription() {
+
+        }
+
+        static void vivienneMoreauMansionDescription() {
+
+        }
+        
+        static void emmanuellaSkateParkDescription(){
+
+        }
+
+        static void sadePhotoDescription(){
 
         }
     }
@@ -94,17 +106,23 @@ public class ShirleyJones {
             if (globalVariables.chosenLocation.equals("1")){
                 Dialogues.officeDescription();
             } else if(globalVariables.chosenLocation.equals("2")) {
-                Dialogues.marthaDescription();
+                Dialogues.marthaHomeDescription();
             } else if(globalVariables.chosenLocation.equals("3")) {
-                Dialogues.davidDescription();
+                Dialogues.davidBakeryDescription();
             } else if(globalVariables.chosenLocation.equals("4")) {
-                Dialogues.laylaDescription();
+                Dialogues.laylaStoreDescription();
             } else if(globalVariables.chosenLocation.equals("5")) {
-                Dialogues.jasonDescription();
+                Dialogues.jasonHomeDescription();
             } else if(globalVariables.chosenLocation.equals("6")) {
-                Dialogues.dariaDescription();
+                Dialogues.dariaFlowerDescription();
             } else if(globalVariables.chosenLocation.equals("7")) {
-                Dialogues.emberDescription();
+                Dialogues.emberCommunityDescription();
+            } else if (globalVariables.chosenLocation.equals("8")){
+                Dialogues.vivienneMoreauMansionDescription();
+            } else if (globalVariables.chosenLocation.equals("9")){
+                Dialogues.emmanuellaSkateParkDescription();
+            } else if (globalVariables.chosenLocation.equals("10")){
+                Dialogues.sadePhotoDescription();
             }
         }
         static void enterGame() {
@@ -151,13 +169,15 @@ public class ShirleyJones {
     // NPC Class
 
     static class NPC {
-        String name;
+        String firstName;
+        String lastName;
         boolean isKiller;
         int age;
         String address;
 
-        public NPC(String name, boolean isKiller, int age, String address){
-            this.name = name;
+        public NPC(String firstName, String lastName, boolean isKiller, int age, String address){
+            this.firstName = firstName;
+            this.lastName = lastName;
             this.isKiller = isKiller;
             this.age = age;
             this.address = address;

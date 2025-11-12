@@ -24,3 +24,9 @@ However, no matter how many times I tested the function it wouldn't do it. The i
 ## 11/7
 
 For the last 2 days I focused more on developing characters instead of actually programming. I plan to write dialogues on Milanote first and then try to incorporate them in the dialogue class functions.
+
+## 11/11
+
+It's 11/11! Make a wish!
+
+I created more character boards (will add this unto wiki) and updated the NPC class and the chooseLocation function to match the addition of new characters as well.

@@ -13,27 +13,19 @@ Notes:
 
 public class ShirleyJones {
     public static void main(String[] args){
-        // Initializations
-        Clue firstClue = new Clue("This is the first Clue.");
-        Clue secondClue = new Clue("This is the second Clue");
-        Clue thirdClue = new Clue("This is the third Clue.");
-        Clue fourthClue = new Clue("This is the fourth Clue.");
-
-        Player userPlayer = new Player("Your Office", 100, 0);
-        Clue[] cluesList = {firstClue, secondClue, thirdClue, fourthClue};
 
         // Actual Code
-
-        // Scanners
-        
+        InputFunctions.enterGame();        
 
         // Tests
-        InputFunctions.enterGame();
-        System.out.println(userPlayer.health); // Prints Player Health (checks if I properly set up the player class)
-        System.out.println(cluesList[0].clueDesc); // Prints the first clue's description (makes sure that I can access the description through using the index of the clue + a method)
+
+        System.out.println(globalVariables.userPlayer.health); // Prints Player Health (checks if I properly set up the player class)
+        System.out.println(globalVariables.cluesList[0].clueDesc); // Prints the first clue's description (makes sure that I can access the description through using the index of the clue + a method)
         InputFunctions.locationInputMethod(); // Creates a scanner, gets the input, and stores it in the variable globalVariables.chosenLocation
         validationFunctions.checkLocationInput(); // This checks the globalVariables.chosenLocation variable and prints a statement depending on that location number
-
+        
+        globalVariables.currentNPC = Suspects.martha;
+        System.out.println(globalVariables.currentNPC.firstName); // Makes sure I coded how to change "current" variables correctly
     }
 
 
@@ -42,16 +34,42 @@ public class ShirleyJones {
     public class globalVariables { // Global Variables Class: General Variables that I don't know where to put
         static String chosenLocation; // Where the chosenLocation gets stored
         static String enterGameResponse;
+
+        // Initializations
+        static Clue firstClue = new Clue("This is the first Clue.");
+        static Clue secondClue = new Clue("This is the second Clue");
+        static Clue thirdClue = new Clue("This is the third Clue.");
+        static Clue fourthClue = new Clue("This is the fourth Clue.");
+        static Clue fifthClue = new Clue("This is the fifth Clue.");
+
+        static Player userPlayer = new Player("Your Office", 100, 0);
+        static Clue[] cluesList = {firstClue, secondClue, thirdClue, fourthClue, fifthClue};
+
+        static NPC currentNPC = Suspects.martha;
+
     }
 
+    public class Suspects {
+        // NPCs
+        static NPC martha = new NPC("Martha", "O'Sullivan", false, 25, "Martha's House");
+        static NPC david = new NPC("David", "Alvarez", false, 48, "La Panaderia");
+        static NPC layla = new NPC("Layla", "Amin", false, 18, "Al'Amin Corner Store");
+        static NPC jason = new NPC("Jason", "Brith", false, 56, "Jason's Home");
+        static NPC daria = new NPC("Daria", "Gillian", false, 33, "Fun and Flowers");
+        static NPC ember = new NPC("Ember", "Huxley", false, 19, "Community Center");
+        static NPC vivienne = new NPC("Vivienne", "Moreau", false, 22, "Moreau Mansion");
+        static NPC emmanuella = new NPC("Emmanuella", "Choi", false, 20, "Yap Square Skate Park");
+        static NPC sade = new NPC("Sade", "Adelogun", false, 23, "Studio of the Stars");
+        static NPC matyas = new NPC("Matyas", "Horvath", false, 43, "5th Avenue Event Center");
+    }
     // Dialogues Class
 
     public class Dialogues {
         static void playerDescription() { // Description of Shirley Jones
-            System.out.println("Your name is Shirley Jones. You are a detective from Old Yap City. You are investigating a murder that occurred a couple of days ago.");
+            System.out.println("Your name is Shirley Jones. You are a detective from Old Yap City. You are investigating the murder of Cimani, a celebrity who was found dead later last night.");
         }
         static void printLocations() { // 7 Current Locations out of 11
-            System.out.print("Where do you want to go? Enter the number for the location you want to go to. 1) Your Office, 2) Martha's House, 3) David's Bakery, 4) Layla's Corner Store, 5) Officer Jason's Home, 6) Daria's Flower Shop, 7) Community Center, 8) Moreau Mansion: ");
+            System.out.print("Where do you want to go? Enter the number for the location you want to go to. 1) Your Office, 2) Martha's House, 3) La Panaderia, 4) Al'Amin Corner Store, 5) Officer Jason's Home, 6) Fun and Flowers, 7) Community Center, 8) Moreau Mansion, 9) Yap Square Skate Park, 10) Studio of the Stars, 11) 5th Street Event Venue: ");
         }
 
         static void printNewClue() { // When the player gets a new clue, print this
@@ -60,29 +78,31 @@ public class ShirleyJones {
 
         static void officeDescription() {
             System.out.println("You enter your office. Now you can review your list of gathered clues in peace.");
+
+            
         }
 
         static void marthaHomeDescription() {
-
+            System.out.println("null");
         }
         static void davidBakeryDescription() {
-
+            System.out.println("null");
         }
 
         static void laylaStoreDescription() {
-
+            System.out.println("null");
         }
 
         static void jasonHomeDescription() {
-
+            System.out.println("null");
         }
 
         static void dariaFlowerDescription() {
-
+            System.out.println("null");
         }
 
         static void emberCommunityDescription() {
-
+            System.out.println("null");
         }
 
         static void vivienneMoreauMansionDescription() {
@@ -96,6 +116,10 @@ public class ShirleyJones {
         static void sadePhotoDescription(){
 
         }
+
+        static void matyasEventVenue(){
+
+        }
     }
 
     public class InputFunctions {
@@ -103,30 +127,80 @@ public class ShirleyJones {
             Scanner inputLocation = new Scanner(System.in);
             Dialogues.printLocations();
             globalVariables.chosenLocation = inputLocation.nextLine();
+
             if (globalVariables.chosenLocation.equals("1")){
-                Dialogues.officeDescription();
-            } else if(globalVariables.chosenLocation.equals("2")) {
+                // Office
+                Dialogues.officeDescription();            
+                globalVariables.userPlayer.location = "Your Office";
+                globalVariables.currentNPC = null;
+
+            } else if(globalVariables.chosenLocation.equals("2")) { 
+                // Martha
                 Dialogues.marthaHomeDescription();
+                globalVariables.currentNPC = Suspects.martha;
+                globalVariables.userPlayer.location = globalVariables.currentNPC.questioningLocation;
+
             } else if(globalVariables.chosenLocation.equals("3")) {
+                // David
                 Dialogues.davidBakeryDescription();
+                globalVariables.currentNPC = Suspects.david;
+                globalVariables.userPlayer.location = globalVariables.currentNPC.questioningLocation;   
+
             } else if(globalVariables.chosenLocation.equals("4")) {
+                // Layla
                 Dialogues.laylaStoreDescription();
+                globalVariables.currentNPC = Suspects.layla;
+                globalVariables.userPlayer.location = globalVariables.currentNPC.questioningLocation;
+
             } else if(globalVariables.chosenLocation.equals("5")) {
+                // Jason
                 Dialogues.jasonHomeDescription();
+                globalVariables.currentNPC = Suspects.jason;
+                globalVariables.userPlayer.location = globalVariables.currentNPC.questioningLocation;
+
             } else if(globalVariables.chosenLocation.equals("6")) {
+                // Daria
                 Dialogues.dariaFlowerDescription();
+                globalVariables.currentNPC = Suspects.daria;
+                globalVariables.userPlayer.location = globalVariables.currentNPC.questioningLocation;
+            
             } else if(globalVariables.chosenLocation.equals("7")) {
+                // Ember
                 Dialogues.emberCommunityDescription();
+                globalVariables.currentNPC = Suspects.ember;
+                globalVariables.userPlayer.location = globalVariables.currentNPC.questioningLocation;
+
             } else if (globalVariables.chosenLocation.equals("8")){
+                // Vivienne
                 Dialogues.vivienneMoreauMansionDescription();
+                globalVariables.currentNPC = Suspects.vivienne;
+                globalVariables.userPlayer.location = globalVariables.currentNPC.questioningLocation;
+
             } else if (globalVariables.chosenLocation.equals("9")){
+                // Emmanuella
                 Dialogues.emmanuellaSkateParkDescription();
+                globalVariables.currentNPC = Suspects.emmanuella;
+                globalVariables.userPlayer.location = globalVariables.currentNPC.questioningLocation;
+
             } else if (globalVariables.chosenLocation.equals("10")){
+                // Sade
                 Dialogues.sadePhotoDescription();
+                globalVariables.currentNPC = Suspects.sade;
+                globalVariables.userPlayer.location = globalVariables.currentNPC.questioningLocation;
+
+            } else if (globalVariables.chosenLocation.equals("11")){
+                // Matyas
+                Dialogues.matyasEventVenue();
+                globalVariables.currentNPC = Suspects.matyas;
+                globalVariables.userPlayer.location = globalVariables.currentNPC.questioningLocation;
+
+            } else {
+                System.out.println("Invalid input. Try again.");
+                InputFunctions.locationInputMethod();
             }
         }
         static void enterGame() {
-            System.out.println("Welcome to Shirley Jones, a murder mystery game where you have to find out who killed the beloved star, Cimani. Press enter to play.");
+            System.out.print("Welcome to Shirley Jones, a murder mystery game where you have to find out who killed the beloved star, Cimani. Press enter to play.");
             Scanner enterKey = new Scanner(System.in);
             globalVariables.enterGameResponse = enterKey.nextLine();
             if (globalVariables.enterGameResponse.equals("")){
@@ -173,14 +247,17 @@ public class ShirleyJones {
         String lastName;
         boolean isKiller;
         int age;
-        String address;
+        String questioningLocation;
+        String hairColor;
+        String eyeColor;
+        String height;
 
-        public NPC(String firstName, String lastName, boolean isKiller, int age, String address){
+        public NPC(String firstName, String lastName, boolean isKiller, int age, String questioningLocation){
             this.firstName = firstName;
             this.lastName = lastName;
             this.isKiller = isKiller;
             this.age = age;
-            this.address = address;
+            this.questioningLocation = questioningLocation;
         }
     }
 

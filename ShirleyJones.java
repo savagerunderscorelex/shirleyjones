@@ -30,10 +30,9 @@ public class ShirleyJones {
 
     public class globalVariables { // Global Variables Class: General Variables that I don't know where to put
         static String chosenLocation; // Where the chosenLocation gets stored
-        static String enterGameResponse;
 
         // Initializations
-        static Clue firstClue = new Clue("This is the first Clue.");
+        static Clue firstClue = new Clue("The killer runs a business.");
         static Clue secondClue = new Clue("This is the second Clue");
         static Clue thirdClue = new Clue("This is the third Clue.");
         static Clue fourthClue = new Clue("This is the fourth Clue.");
@@ -94,7 +93,7 @@ public class ShirleyJones {
         }
 
         static void printCurrentNPCDetails() {
-            System.out.println("You look at your notes: \n");
+            System.out.println("You look at your notes, describing the suspect in front of you: \n");
             System.out.println(("First Name: " + globalVariables.currentNPC.firstName));
             System.out.println("Last Name: " + globalVariables.currentNPC.lastName);
             System.out.println("Hair Color: " + globalVariables.currentNPC.hairColor);
@@ -136,6 +135,8 @@ public class ShirleyJones {
 
         static void sadePhotoDescription(){
             System.out.println("You approach a photo studio, a midnight-color building decorated with stars of varying sizes and shapes. The lit sign in the front of the building says \"Studio of the Stars.\"");
+            System.out.println("Waiting at the front steps is a woman, a friend of Cimani's.");
+
         }
 
         static void matyasEventVenue(){
@@ -232,17 +233,21 @@ public class ShirleyJones {
                 InputFunctions.locationInputMethod();
             }
         }
+
+        // Method to enter the game
         static void enterGame() {
             System.out.print("Welcome to Shirley Jones, a murder mystery game where you have to find out who killed the beloved star, Cimani. Press the enter key to play.");
             Scanner enterKey = new Scanner(System.in);
-            globalVariables.enterGameResponse = enterKey.nextLine();
-            if (globalVariables.enterGameResponse.equals("")){
+            String enterGameResponse = enterKey.nextLine();
+            if (enterGameResponse.equals("")){
                 System.out.println("You have entered the game.");
             } else {
                 System.out.println("Invalid input. Try again.");
                 InputFunctions.enterGame();
             }
         }
+
+        // Method to enter the office of Shirley Jones
         static void officeInputMethod() {
             Scanner officeInput = new Scanner(System.in);
             System.out.print("What do you want to do? 1) Review Clues List, 2) Declare Who's Guilty, 3) Leave Your Office: ");
@@ -270,6 +275,7 @@ public class ShirleyJones {
 
         }
     }
+
     // Player Class
     static class Player {
         String location;

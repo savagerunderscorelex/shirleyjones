@@ -6,6 +6,8 @@ public class InputFunctions {
         Dialogues.printLocations();
         globalVariables.chosenLocation = inputLocation.nextLine();
 
+        
+        
         if (globalVariables.chosenLocation.equals("1")){
             // Office
             Dialogues.officeDescription();            
@@ -86,6 +88,8 @@ public class InputFunctions {
             System.out.println("Invalid input. Try again.");
             InputFunctions.locationInputMethod();
         }
+
+        inputLocation.close();
     }
 
     static void enterGame() {

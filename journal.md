@@ -30,3 +30,13 @@ For the last 2 days I focused more on developing characters instead of actually 
 It's 11/11! Make a wish!
 
 I created more character boards (will add this unto wiki) and updated the NPC class and the chooseLocation function to match the addition of new characters as well.
+
+## 10/16
+
+It's been a while since I've even worked on this project (almost a year)!
+
+The updates I've done have been created between yesterday and today. I realized I have to completely restructure my code, because when I started this project, I didn't know Java. All the knowledge I had with Java I had to search up, (using stack overflow and java docs) so I didn't actually know how Java worked.
+
+I'm taking a Java programming class for dual enrollment, and I've learned a lot about how to PROPERLY code in Java. One thing I was previously doing in this project was having all the classes in the same document, when in Java, classes are in separate files. So, it took a lot of time to put the classes into separate files and fix all the bugs that came with that.
+
+My next step is to start actually planning the code structure, since many of the things I was doing previously would NOT follow the proper coding practices for Java (like using static fields and methods for all classes).
